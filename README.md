@@ -11,6 +11,8 @@ Base On：
    
 My Environment：
   Win8.1 x64 Vs2017.
-  
+    
+Effect Image:  Create Lines by Raise TouchDown、TouchMove、TouchUp Events.   
 
-  
+<img src="https://github.com/DuelCode/TouchSimulate/blob/master/Effect.jpg" alt="Effect.jpg">
+

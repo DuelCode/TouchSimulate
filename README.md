@@ -2,6 +2,7 @@
 Simulate Touch Events
 
 Base On：
+  
    [DllImport("User32.dll")]
    public static extern bool InitializeTouchInjection(uint maxCount = 256, TouchFeedback feedbackMode = TouchFeedback.DEFAULT);
 
@@ -11,4 +12,5 @@ Base On：
 My Environment：
   Win8.1 x64 Vs2017.
   
+
   

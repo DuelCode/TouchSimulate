@@ -1,0 +1,34 @@
+ Multi Touch Also Support like this：
+ 
+ private void BdrSimulateZm_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+{
+
+    // Touch Down Simulate
+    int x1 = this.GetRandomSeed().Next(50, 1680 - 100);
+    int y1 = this.GetRandomSeed().Next(50, 1080 - 100);
+    PointerTouchInfo oContact1 = MakePointerTouchInfo(x1, y1, 5, 1);
+
+    int x2 = this.GetRandomSeed().Next(50, 1680 - 100);
+    int y2 = this.GetRandomSeed().Next(50, 1080 - 100);
+    PointerTouchInfo oContact2 = MakePointerTouchInfo(x2, y2, 5, 1);
+
+    PointerFlags oFlags = PointerFlags.DOWN | PointerFlags.INRANGE | PointerFlags.INCONTACT;
+    oContact1.PointerInfo.PointerFlags = oFlags;
+    oContact2.PointerInfo.PointerFlags = oFlags;
+    TouchInjector.InjectTouchInput(2, new[] { oContact1, oContact2 });
+
+    // Touch Move Simulate
+    int nMoveIntervalX = this.GetRandomSeed().Next(-60, 60);
+    int nMoveIntervalY = this.GetRandomSeed().Next(-60, 60);
+    oContact1.Move(nMoveIntervalX, nMoveIntervalY);
+    oContact2.Move(nMoveIntervalX, nMoveIntervalY);
+    oFlags = PointerFlags.INRANGE | PointerFlags.INCONTACT | PointerFlags.UPDATE;
+    oContact1.PointerInfo.PointerFlags = oFlags;
+    oContact2.PointerInfo.PointerFlags = oFlags;
+    TouchInjector.InjectTouchInput(2, new[] { oContact1 , oContact2 });
+
+    // Touch Up Simulate
+    oContact1.PointerInfo.PointerFlags = PointerFlags.UP;
+    oContact2.PointerInfo.PointerFlags = PointerFlags.UP;
+    TouchInjector.InjectTouchInput(2, new[] { oContact1, oContact2 });
+}
